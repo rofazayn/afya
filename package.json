@@ -5,6 +5,23 @@
     "lerna": "^4.0.0"
   },
   "workspaces": [
-     "packages/*"
-  ] 
+    "packages/*"
+  ],
+  "nohoist": [
+    "**/react-native",
+    "**/react-native/**",
+    "**/expo",
+    "**/expo/**"
+  ],
+  
+  "dependencies": {
+    "metro-config": "^0.56.0"
+  },
+  "scripts": {
+      "android": "lerna --scope=@afya/native run android --stream --",
+      "ios": "lerna --scope=@afya/native run ios --stream --",
+      "expo": "lerna --scope=@afya/native run start --stream --",
+      "postinstall": "cd ./packages/native && expo-yarn-workspaces postinstall",
+      "web": "lerna --scope=@afya/web run dev --stream" 
+    }
 }
